@@ -1,0 +1,174 @@
+/* DnsSwitcher.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: flex-start;
+    align-items: center;
+}
+  
+.selectionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullWindow {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 50vh;
+    width: 100vw;
+}
+  
+.button {
+    background-color: #cccccc;
+    color: #333;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    box-shadow: none;
+    margin: 10px;
+    font-weight: 750;
+}
+  
+
+.button {
+    box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+  
+.button:hover {
+    box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.button:hover {
+    background-color: #aaaaaa;
+}
+  
+.select {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 2px 10px 20px 10px;
+}
+  
+
+.option {
+    background-color: #f5f5f5;
+    font-size: 14px;
+    color: #333;
+}
+
+.statusContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    width: 150px;
+    height: 30px;
+}
+
+.statusText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    font-weight: 750;
+    background-color: #bebaba;
+    border-radius: 20px 0px 0px 20px;
+}
+  
+.statusGlow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    background-color: #dddddd;
+    border-radius: 0px 20px 20px 0px;
+    transition: background-color 0.3s;
+}
+  
+.statusOn .statusGlow {
+    background-color: #4caf50;
+    border-color: #78D965;
+    color:#2c772e;
+    font-weight: 750;
+}
+  
+.statusOff .statusGlow {
+    background-color: #f44336;
+    border-color: #C42C3B;
+    color:#823131;
+    font-weight: 750;
+}
+  
+.statusTextWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+}
+  
+.statusDivider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+  
+.statusDivider::before {
+    content: "";
+    border-right: 1px solid black;
+    height: 25px;
+}
+  
+.greenModal, .redModal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  animation: slide-up 1s ease-out;
+  z-index: 1000;
+}
+
+.greenModal {
+  background-color: #4caf50;
+  color: white;
+}
+
+.redModal {
+  background-color: #f44336;
+  color: white;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+
+.dnsSelect{
+    padding-left: 10px;
+}
+  
