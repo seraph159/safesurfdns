@@ -1,12 +1,12 @@
 [package]
-name = "SafeSurfDNS"
+name = "app"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["serpah159"]
-license = ""
-repository = ""
+description = "A Safe Browsing Solution"
+authors = ["seraph159"]
+license = "Apache-2.0 license"
+repository = "https://github.com/seraph159/safesurfdns"
 default-run = "app"
-edition = "2023"
+edition = "2021"
 rust-version = "1.60"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
