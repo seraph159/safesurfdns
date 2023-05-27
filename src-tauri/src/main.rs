@@ -2,12 +2,12 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod utils;
-use utils::dns_utils::win;
-use network_interface::NetworkInterface;
-use network_interface::NetworkInterfaceConfig;
 
 #[cfg(target_os = "windows")]
 fn set_dns(safe: bool, primarydns: String, secondarydns: String) -> Result<(), String> {
+    use utils::dns_utils::win;
+    use network_interface::NetworkInterface;
+    use network_interface::NetworkInterfaceConfig;
 
     let mut errors = Vec::new();
 
