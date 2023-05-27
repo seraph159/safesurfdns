@@ -104,7 +104,7 @@ fn set_dns(safe: bool, primarydns: String, secondarydns: String) -> Result<(), S
 
         if !output.status.success() {
             eprintln!("Error retrieving network services: {:?}", output);
-            return;
+            return Err("Error retrieving network services".to_string());
         }
 
         let output_str = String::from_utf8_lossy(&output.stdout);
@@ -117,7 +117,8 @@ fn set_dns(safe: bool, primarydns: String, secondarydns: String) -> Result<(), S
             }
 
             let mut args = vec!["-setdnsservers", interface_name];
-            args.extend_from_slice(dns_servers);
+            let dns_servers_str: Vec<&str> = dns_servers.iter().map(AsRef::as_ref).collect();
+            args.extend_from_slice(&dns_servers_str);
 
             let output = Command::new("networksetup")
                 .args(&args)
@@ -143,7 +144,7 @@ fn set_dns(safe: bool, primarydns: String, secondarydns: String) -> Result<(), S
 
         if !output.status.success() {
             eprintln!("Error retrieving network services: {:?}", output);
-            return;
+            return Err("Error retrieving network services".to_string());
         }
 
         let output_str = String::from_utf8_lossy(&output.stdout);
@@ -168,7 +169,9 @@ fn set_dns(safe: bool, primarydns: String, secondarydns: String) -> Result<(), S
         }
 
         println!("DNS settings reset successfully for all interfaces.");
-}
+    }
+
+    return Ok(());
 
 }
 
@@ -180,7 +183,7 @@ fn set_dns(safe: bool, primarydns: String, secondarydns: String) -> Result<(), S
   use std::io::BufWriter;
   
   if safe {
-    let dns_servers = "nameserver 208.67.222.123\nnameserver 208.67.220.123"; // OpenDNS FamilyShield servers
+    let dns_servers = format!("nameserver {}\nnameserver {}", &primarydns, &secondarydns); // OpenDNS FamilyShield servers
 
     let path = "/etc/resolv.conf";
     let file = File::create(path).expect("Failed to open file");
@@ -194,6 +197,8 @@ fn set_dns(safe: bool, primarydns: String, secondarydns: String) -> Result<(), S
     let mut writer = BufWriter::new(file);
     writer.write_all(dns_servers.as_bytes()).expect("Failed to write DNS settings");
   }
+
+  return Ok(());
 }
 
 #[tauri::command]
